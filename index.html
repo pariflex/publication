@@ -8,7 +8,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #1a1a1a; /* Dark background for neon effect */
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .switch-container {
@@ -20,15 +22,16 @@ body {
 .switch {
   width: 50px;
   height: 100px;
-  background-color: #ccc;
+  background-color: #333;
   border-radius: 25px;
   position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
 }
 
 .switch.on {
-  background-color: #4CAF50;
+  background-color: #00ff00; /* Green "on" state */
 }
 
 .switch::before {
@@ -41,6 +44,7 @@ body {
   top: 5px;
   left: 5px;
   transition: transform 0.3s;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Glow on the slider */
 }
 
 .switch.on::before {
@@ -50,50 +54,27 @@ body {
 .electricity-flow {
   width: 5px;
   height: 0;
-  background-color: yellow;
+  background: linear-gradient(to bottom, transparent, #00ffff); /* Neon blue gradient */
   margin-top: 10px;
   transition: height 0.5s ease-in-out;
+  box-shadow: 0 0 15px #00ffff; /* Neon glow */
 }
 
 .electricity-flow.on {
   height: 100px; /* Adjust as needed */
 }
 
-.bulb {
-  width: 60px;
-  height: 100px;
-  background-color: #eee;
-  border-radius: 50% 50% 40% 40%;
-  position: relative;
+.planningdome {
+  font-size: 3em;
+  color: #00ffff; /* Neon cyan text */
+  text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; /* Strong neon glow */
   margin-top: 20px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s;
 }
 
-.bulb::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 25px;
-  width: 10px;
-  height: 10px;
-  background-color: #333;
-  border-radius: 50%;
-}
-
-.bulb::after {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border-top: 2px solid #333;
-}
-
-.bulb.on {
-  background-color: #fffacd;
-  box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.7);
+.planningdome.on {
+  opacity: 1; /* Fade in when "on" */
 }
 
 </style>
@@ -103,18 +84,18 @@ body {
 <div class="switch-container">
   <div class="switch" id="mySwitch"></div>
   <div class="electricity-flow" id="electricityFlow"></div>
-  <div class="bulb" id="myBulb"></div>
+  <div class="planningdome" id="planningdomeText">PLANNINGDOME</div>
 </div>
 
 <script>
 const mySwitch = document.getElementById('mySwitch');
 const electricityFlow = document.getElementById('electricityFlow');
-const myBulb = document.getElementById('myBulb');
+const planningdomeText = document.getElementById('planningdomeText');
 
 mySwitch.addEventListener('click', () => {
   mySwitch.classList.toggle('on');
   electricityFlow.classList.toggle('on');
-  myBulb.classList.toggle('on');
+  planningdomeText.classList.toggle('on');
 });
 </script>
 
