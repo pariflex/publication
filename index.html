@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Logo Layout</title>
+<title>Electric Switch Animation</title>
 <style>
+/* ... (existing CSS for switch, electricity, etc.) ... */
+
 .logo-container {
   text-align: center;
   font-family: sans-serif;
+  margin-top: 20px; /* Add space between switch and logo */
 }
 
 .symbol {
   width: 100px;
   height: 100px;
   margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.symbol.on{
+  opacity: 1;
 }
 
 .rule {
@@ -19,29 +28,85 @@
   height: 2px;
   background-color: #333;
   margin: 10px auto;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.rule.on{
+  opacity: 1;
 }
 
 .planningdome {
   font-size: 2.5em;
   font-weight: bold;
   margin-bottom: 5px;
+  display: flex; /* Use flexbox for letter animations */
 }
 
 .engineering {
   font-size: 1em;
   letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
+
+.engineering.on{
+  opacity: 1;
+}
+
+/* ... (existing letter animations) ... */
+
 </style>
 </head>
 <body>
 
-<div class="logo-container">
-  <div class="symbol">
-    <img src="your-symbol-image.png" alt="Symbol">  </div>
-  <div class="rule"></div>
-  <div class="planningdome">PLANNINGDOME</div>
-  <div class="engineering">COMPLETE ENGINEERING</div>
+<div class="switch-container">
+  <div class="switch" id="mySwitch"></div>
+  <div class="electricity-flow" id="electricityFlow"><div class="wave"></div></div>
+
+  <div class="logo-container">
+    <div class="symbol" id="symbolDiv">
+      <img src="your-symbol-image.png" alt="Symbol">
+    </div>
+    <div class="rule" id="ruleDiv"></div>
+    <div class="planningdome" id="planningdomeText">
+      <span class="letter">P</span><span class="letter">L</span><span class="letter">A</span><span class="letter">N</span><span class="letter">N</span><span class="letter">I</span><span class="letter">N</span><span class="letter">G</span><span class="letter">D</span><span class="letter">O</span><span class="letter">M</span><span class="letter">E</span>
+    </div>
+    <div class="engineering" id="engineeringText">COMPLETE ENGINEERING</div>
+  </div>
 </div>
+
+<script>
+const mySwitch = document.getElementById('mySwitch');
+const electricityFlow = document.getElementById('electricityFlow');
+const letters = document.querySelectorAll('.letter');
+const symbolDiv = document.getElementById('symbolDiv');
+const ruleDiv = document.getElementById('ruleDiv');
+const engineeringText = document.getElementById('engineeringText');
+
+mySwitch.addEventListener('click', () => {
+  mySwitch.classList.toggle('on');
+  electricityFlow.classList.toggle('on');
+  symbolDiv.classList.toggle('on');
+  ruleDiv.classList.toggle('on');
+  engineeringText.classList.toggle('on');
+
+  if (mySwitch.classList.contains('on')) {
+    letters.forEach((letter, index) => {
+      setTimeout(() => {
+        letter.classList.add('on');
+      }, index * 200);
+    });
+  } else {
+    letters.forEach(letter => {
+      letter.classList.remove('on');
+    });
+    symbolDiv.classList.remove('on');
+    ruleDiv.classList.remove('on');
+    engineeringText.classList.remove('on');
+  }
+});
+</script>
 
 </body>
 </html>
