@@ -1,130 +1,122 @@
 <!DOCTYPE html>
-<html amp>
+<html>
 <head>
-<title>Publication</title>
-<meta name="description" content="DEPARTMENT OF BOTANY" />
-<meta property="og:title" content="Publication" />
-<meta property="og:url" content="https://www.bujhansi.ac.in/" />
-<meta property="og:description" content="DEPARTMENT OF BOTANY" />
-<meta property="og:image" content="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_01.webp?raw=true" />
-
- 
- <meta charset="utf-8">
- <script async src="https://cdn.ampproject.org/v0.js"></script>
- <link rel="canonical" href="http://localhost/Tutorials/AMP/amp_erro.html">
- <meta name="viewport" content="width=device-width">
- <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
- <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
- <script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>
-
- <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
- <style amp-custom> body { width: auto; margin: 0; padding: 0; } header { background: Tomato; color: white; font-size: 2em; text-align: center; } h1 { margin: 0; padding: 0.5em; background: white; box-shadow: 0px 3px 5px grey; } p { padding: 0.5em; margin: 0.5em; } .carousel_dots{ text-align: center; } .current { background: #6e6e6e; } button { margin: 0 3px; border: solid 1px #ccc; height: 8px; border-radius: 100%; padding: 0 3px;}.headerbar { height: 50px; position: fixed; z-index: 999; top: 0; width: 100%; display: flex; align-items: center; }.site-name { margin: auto; }
-   .header{
-    overflow: hidden;
-  position: fixed;
-  top: 0;
-  background: rgb(0, 102, 255);
-  color: white;
-  font-size: 22px;
-  text-align: center;
-  justify-content: space-around;
-  z-index: 10;
-  display: flex;
-  width: 100vw;
-  height: 10vh;
-   }
-   .footer{
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    background: #17FF00;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-    z-index: 10;
-    display: block;
-    width: 95vw;
-    height: 40px;
-    border-radius: 50px 50px;
-    margin: 10px 10px 10px 10px; 
-        }
-
-   img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  height: 100%;
-}
-.img-fluid {
-max-width: 100%;
-height: auto;
-line-height: 0;
-}
-@media screen and (max-width: 500px) {
-.responsive  {
-padding: 0px 0px;
-display: block;
-margin: 0px 0px;
-}
-}
-.responsive img {
-display: block;
-possition: center;   
-}
+<title>Electric Switch Animation</title>
+<style>
 body {
-   margin: 0;
-   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
- ::-webkit-scrollbar {
-  display: none;
-  }
+
+.switch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch {
+  width: 50px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.switch.on {
+  background-color: #4CAF50;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+  transition: transform 0.3s;
+}
+
+.switch.on::before {
+  transform: translateY(50px);
+}
+
+.electricity-flow {
+  width: 5px;
+  height: 0;
+  background-color: yellow;
+  margin-top: 10px;
+  transition: height 0.5s ease-in-out;
+}
+
+.electricity-flow.on {
+  height: 100px; /* Adjust as needed */
+}
+
+.bulb {
+  width: 60px;
+  height: 100px;
+  background-color: #eee;
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  margin-top: 20px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.bulb::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 25px;
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.bulb::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-top: 2px solid #333;
+}
+
+.bulb.on {
+  background-color: #fffacd;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.7);
+}
+
 </style>
- 
 </head>
- <body style="background-color:white;">
-          
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_01.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_02.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_03.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_04.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_05.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_06.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_07.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_08.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_09.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_10.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_11.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_12.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_13.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_14.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_15.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_16.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_17.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_18.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_19.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_20.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_21.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_22.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_23.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_24.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_25.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_26.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_27.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_28.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_29.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_30.webp?raw=true" loading="lazy" alt="..." />
-            <img src="https://raw.githubusercontent.com/pariflex/publication/main/Image/PUBLICATIONS_31.webp?raw=true" loading="lazy" alt="..." />
-            
-           
-            <a href="https://drive.google.com/file/d/1pjUbRPhsIbIlnIpLsDlAHk7BYBqPL1q3/view?usp=sharing"><img src="https://raw.githubusercontent.com/pariflex/therising/main/Image/DOWNLOAD.webp?raw=true" loading="lazy" alt="..." />
-          
-      <footer class="footer" amp-fx="float-in-bottom">
+<body>
 
-        <div href="https://drive.google.com/file/d/1pjUbRPhsIbIlnIpLsDlAHk7BYBqPL1q3/view?usp=sharing">DOWNLOAD</div>
+<div class="switch-container">
+  <div class="switch" id="mySwitch"></div>
+  <div class="electricity-flow" id="electricityFlow"></div>
+  <div class="bulb" id="myBulb"></div>
+</div>
 
-      </footer>
+<script>
+const mySwitch = document.getElementById('mySwitch');
+const electricityFlow = document.getElementById('electricityFlow');
+const myBulb = document.getElementById('myBulb');
 
-  </body>
+mySwitch.addEventListener('click', () => {
+  mySwitch.classList.toggle('on');
+  electricityFlow.classList.toggle('on');
+  myBulb.classList.toggle('on');
+});
+</script>
+
+</body>
 </html>
