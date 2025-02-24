@@ -1,69 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section with Electric Switch</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #000;
-            color: #fff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electric Switch Hero</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #222;
+      overflow: hidden; /* Prevent scrollbars */
+    }
 
-        .hero {
-            text-align: center;
-        }
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%; /* Adjust as needed */
+      max-width: 800px;
+    }
 
-        .switch {
-            width: 100px;
-            height: 50px;
-            background-color: #444;
-            border-radius: 25px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .switch-container {
+      position: relative;
+      width: 100px;
+      height: 200px;
+      background-color: #333;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 50px;
+    }
 
-        .switch.on {
-            background-color: #0f0; /* Green when ON */
-        }
+    .switch-button {
+      width: 60px;
+      height: 30px;
+      background-color: #555;
+      border-radius: 15px;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s, transform 0.3s;
+    }
 
-        .switch::before {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
+    .switch-button::after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background-color: #ccc;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
 
-        .switch.on::before {
-            transform: translateX(50px); /* Move to right when ON */
-        }
+    .switch-button.on {
+      background-color: #0f0; /* Green when on */
+    }
 
-        .glow {
-            font-size: 2em;
-            color: #0f0; /* Neon green */
-            text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; /* Neon glow effect */
-        }
-    </style>
+    .switch-button.on::after {
+      left: 32px;
+    }
+
+    .electricity-line {
+      position: absolute;
+      height: 5px;
+      background: linear-gradient(to right, transparent, #0f0); /* Neo green */
+      width: 0;
+      left: 100px; /* Start at the switch */
+      transition: width 0.5s ease-in-out;
+      z-index: 1;
+    }
+
+    .electricity-line.active {
+      width: calc(100% - 150px); /* Adjust based on switch and text width*/
+    }
+
+    .text-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .text-container h1 {
+      font-size: 4em;
+      color: #0f0; /* Neo green */
+      text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; /* Neo glow */
+      white-space: nowrap;
+    }
+
+    .end-point {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #0f0; /* Neo green */
+      border-radius: 50%;
+      right: 0;
+      box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; /* Neo glow */
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .end-point.active {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="switch" id="electricSwitch"></div>
-        <div class="glow" id="text">PLANNINGDOME</div>
+  <div class="hero">
+    <div class="switch-container">
+      <div class="switch-button" id="switch"></div>
     </div>
+    <div class="text-container">
+      <div class="electricity-line" id="electricityLine"></div>
+      <h1>PLANNINGDOME</h1>
+      <div class="end-point" id="endPoint"></div>
+    </div>
+  </div>
 
-    <script>
-        const electricSwitch = document.getElementById('electricSwitch');
-        electricSwitch.addEventListener('click', () => {
-            electricSwitch.classList.toggle('on');
-        });
-    </script>
+  <script>
+    const switchButton = document.getElementById('switch');
+    const electricityLine = document.getElementById('electricityLine');
+    const endPoint = document.getElementById('endPoint');
+
+    switchButton.addEventListener('click', () => {
+      switchButton.classList.toggle('on');
+      electricityLine.classList.toggle('active');
+      endPoint.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
