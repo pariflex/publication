@@ -3,143 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electric Switch Hero - Wave</title>
+    <title>Hero Section with Electric Switch</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #1a1a1a;
-            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
         }
 
-        .hero-container {
-            position: relative;
+        .hero {
             text-align: center;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        /* Text Styling */
-        .hero-text {
-            font-size: 48px;
-            font-weight: bold;
-            text-transform: uppercase;
-            opacity: 0;
-            transition: opacity 0.5s;
-            animation: neonGlow 1.5s infinite alternate;
-        }
-
-        @keyframes neonGlow {
-            0% { color: #00FFFF; text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; }
-            33% { color: #FF00FF; text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF; }
-            66% { color: #00FF00; text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00; }
-            100% { color: #00FFFF; text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; }
-        }
-
-        .switch.active ~ .hero-text {
-            opacity: 1;
-        }
-
-        /* Electric Flow Line */
-        .electric-line {
-            position: relative;
-            width: 200px;
-            height: 300px;
-        }
-
-        .electric-flow {
-            position: absolute;
-            width: 100%;
-            height: 0;
-            bottom: 0;
-            overflow: hidden;
-            transition: height 1s ease-out;
-        }
-
-        .switch.active + .electric-line .electric-flow {
-            height: 100%;
-        }
-
-        .wave-path {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            position: absolute;
-            bottom: 0;
-            clip-path: path('M 0 300 Q 50 250 100 300 T 200 300 V 0 H 0 Z');
-            animation: waveFlow 2s infinite linear, multiColor 1.5s infinite alternate;
-            opacity: 0.8;
-        }
-
-        @keyframes waveFlow {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100px); }
-        }
-
-        @keyframes multiColor {
-            0% { background: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
-            33% { background: #FF00FF; box-shadow: 0 0 10px #FF00FF; }
-            66% { background: #00FF00; box-shadow: 0 0 10px #00FF00; }
-            100% { background: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
-        }
-
-        /* Switch Button Styling */
         .switch {
+            width: 100px;
+            height: 50px;
+            background-color: #444;
+            border-radius: 25px;
             position: relative;
-            width: 80px;
-            height: 40px;
-            background: #333;
-            border-radius: 20px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background-color 0.3s ease;
         }
 
-        .switch.active {
-            background: #00FFFF;
-            box-shadow: 0 0 10px #00FFFF;
+        .switch.on {
+            background-color: #0f0; /* Green when ON */
         }
 
-        .switch-knob {
+        .switch::before {
+            content: '';
             position: absolute;
-            width: 36px;
-            height: 36px;
-            background: #fff;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
             border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
-        .switch.active .switch-knob {
-            transform: translateX(40px);
+        .switch.on::before {
+            transform: translateX(50px); /* Move to right when ON */
+        }
+
+        .glow {
+            font-size: 2em;
+            color: #0f0; /* Neon green */
+            text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; /* Neon glow effect */
         }
     </style>
 </head>
 <body>
-    <div class="hero-container">
-        <div class="hero-text">PlanningDome</div>
-        <div class="electric-line">
-            <div class="electric-flow">
-                <div class="wave-path"></div>
-            </div>
-        </div>
-        <div class="switch">
-            <div class="switch-knob"></div>
-        </div>
+    <div class="hero">
+        <div class="switch" id="electricSwitch"></div>
+        <div class="glow" id="text">PLANNINGDOME</div>
     </div>
 
     <script>
-        const switchBtn = document.querySelector('.switch');
-        
-        switchBtn.addEventListener('click', () => {
-            switchBtn.classList.toggle('active');
+        const electricSwitch = document.getElementById('electricSwitch');
+        electricSwitch.addEventListener('click', () => {
+            electricSwitch.classList.toggle('on');
         });
     </script>
 </body>
